@@ -124,6 +124,7 @@
         <option value="email">Email</option>
         <option value="date">Date</option>
         <option value="url">URL</option>
+        <option value="time">Time</option>
       </select>
 
       <!-- Button -->
