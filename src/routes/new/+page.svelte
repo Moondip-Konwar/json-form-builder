@@ -1,5 +1,25 @@
-<script>
-  import { Plus } from "lucide-svelte";
+<script lang="ts">
+  import { Delete, Plus } from "lucide-svelte";
+
+  let fieldLabelText = $state("");
+  let selectedFieldType = $state("text");
+
+  let fields = $state<{ label: string; type: string }[]>([
+    { label: "First Name", type: "text" },
+    { label: "Age", type: "number" },
+  ]);
+
+  function addField() {
+    // Validate field label
+    if (!fieldLabelText) {
+      alert("Please enter a field label.");
+      return;
+    }
+
+    fields = [...fields, { label: fieldLabelText, type: selectedFieldType }];
+
+    fieldLabelText = "";
+  }
 </script>
 
 <form class="px-8 py-4 flex flex-row gap-8">
@@ -37,13 +57,37 @@
   <!-- Form Content -->
   <section class="prose">
     <h3>Form Content</h3>
+    <!-- Added Fields -->
+    {#each fields as field}
+      <div class="flex flex-row gap-4 items-center">
+        <input value={field.label} readonly class="flex-1 bg-gray-100" />
+        <input value={field.type.toUpperCase()} readonly class="bg-gray-100" />
+        <!-- Delete Button -->
+        <button
+          type="button"
+          class="cursor-pointer bg-black text-white rounded-md p-2"
+          onclick={() => (fields = fields.filter((f) => f !== field))}
+        >
+          <Delete></Delete>
+        </button>
+      </div>
+    {/each}
+
     <!-- Add Field -->
     <div class="flex flex-row gap-4">
       <!-- Label -->
-      <input type="text" placeholder="Field Label" class="flex-1" />
+      <input
+        type="text"
+        bind:value={fieldLabelText}
+        placeholder="Field Label"
+        class="flex-1"
+      />
 
       <!-- Field Types -->
-      <select class="bg-white border border-gray-300 rounded-md p-2">
+      <select
+        class="bg-white border border-gray-300 rounded-md p-2"
+        bind:value={selectedFieldType}
+      >
         <option value="text">Text</option>
         <option value="number">Number</option>
       </select>
@@ -52,7 +96,7 @@
       <button
         type="button"
         class="cursor-pointer bg-black text-white rounded-md p-2 flex items-center gap-2"
-        on:click={() => alert("Add Field")}
+        onclick={addField}
       >
         <Plus size={16} /> Add Field
       </button>
