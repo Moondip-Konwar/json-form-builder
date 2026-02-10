@@ -1,42 +1,64 @@
-# sv
+# json-form-builder
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A web-based tool to build forms that export JSON data. This application uses a serverless architecture where form configurations are stored entirely within the URL parameters.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **UI Builder**: Create form fields via a visual interface.
+- **URL-Based Sharing**: Form schemas are encoded into the URL. No database or account is required.
+- **JSON Export**: Fillers can copy their responses as raw JSON data.
+- **Local Storage**: Your created forms are saved to your browser's local storage for future access.
 
-```sh
-# create a new project
-npx sv create my-app
+## Tech Stack
+
+- **Framework**: Svelte 5
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide Svelte
+- **Package Manager**: pnpm
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have Node.js and pnpm installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/moondip/json-form-builder.git
+
 ```
 
-To recreate this project with the same configuration:
+2. Install dependencies:
 
-```sh
-# recreate this project
-pnpm dlx sv create --template minimal --types ts --add tailwindcss="plugins:forms,typography" sveltekit-adapter="adapter:static" --install pnpm json-form-builder
+```bash
+pnpm install
+
 ```
 
-## Developing
+### Development
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Start the development server:
 
-```sh
-npm run dev
+```bash
+pnpm dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+### Building
 
-To create a production version of your app:
+To create a production build:
 
-```sh
-npm run build
+```bash
+pnpm build
+
 ```
 
-You can preview the production build with `npm run preview`.
+You can preview the build with:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+pnpm preview
+
+```
