@@ -35,6 +35,14 @@
       fields: JSON.stringify(fields),
     });
 
+    // Save name:url into local storage
+    let previousForms = JSON.parse(localStorage.getItem("forms") || "[]");
+    previousForms.push({
+      name: formName,
+      url: `/forms?${params.toString()}`,
+    });
+    localStorage.setItem("forms", JSON.stringify(previousForms));
+
     goto(`/forms?${params.toString()}`);
   }
 </script>
