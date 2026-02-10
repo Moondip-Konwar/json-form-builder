@@ -2,6 +2,7 @@
 	import "./layout.css";
 	import favicon from "$lib/assets/favicon.svg";
 	import { FileBraces, Menu } from "lucide-svelte";
+	import { resolve } from "$app/paths";
 
 	let { children } = $props();
 </script>
@@ -13,13 +14,14 @@
 	class="flex flex-row px-8 py-4 border-gray-300 border-b-2 justify-between items-stretch"
 >
 	<!-- Title  -->
-	<div class="flex flex-row items-center gap-4">
+	<a class="flex flex-row items-center gap-4" href={resolve("/")}>
 		<FileBraces size="24" strokeWidth="1.3"></FileBraces>
 		<span class="text-xl">Json Forms</span>
-	</div>
+	</a>
 
 	<!-- Links -->
 	<div class="flex flex-row gap-4 items-center" id="nav-links">
+		<a href={resolve("/new")}>New</a>
 		<a href="/">Github</a>
 		<a href="/">About</a>
 	</div>
