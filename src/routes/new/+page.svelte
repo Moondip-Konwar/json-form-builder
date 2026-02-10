@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Delete, Plus } from "lucide-svelte";
   import { goto } from "$app/navigation";
+  import { base } from "$app/paths";
 
   // Form Details
   let formName = $state("");
@@ -43,7 +44,7 @@
     });
     localStorage.setItem("forms", JSON.stringify(previousForms));
 
-    goto(`/forms?${params.toString()}`);
+    goto(`${base}/forms?${params.toString()}`);
   }
 </script>
 

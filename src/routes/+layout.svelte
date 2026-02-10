@@ -2,7 +2,7 @@
 	import "./layout.css";
 	import favicon from "$lib/assets/favicon.svg";
 	import { FileBraces, Menu } from "lucide-svelte";
-	import { resolve } from "$app/paths";
+	import { base } from "$app/paths";
 
 	let { children } = $props();
 </script>
@@ -17,20 +17,16 @@
 	class="flex flex-row px-8 py-4 border-gray-300 border-b-2 justify-between items-stretch"
 >
 	<!-- Title  -->
-	<a
-		class="flex flex-row items-center gap-4"
-		href={resolve("/")}
-		id="nav-title"
-	>
+	<a class="flex flex-row items-center gap-4" href={`${base}/`} id="nav-title">
 		<FileBraces size="24" strokeWidth="1.3"></FileBraces>
 		<span class="text-xl">Json Forms</span>
 	</a>
 
 	<!-- Links -->
 	<div class="flex flex-row gap-4 items-center" id="nav-links">
-		<a href={resolve("/new")}>New</a>
-		<a href="/">Github</a>
-		<a href={resolve("/") + "#about"}>About</a>
+		<a href={`${base}/new`}>New</a>
+		<a href="https://github.com/Moondip-Konwar/json-form-builder">Github</a>
+		<a href={`${base}/#about`}>About</a>
 	</div>
 </nav>
 
@@ -59,15 +55,18 @@
 				<span class="text-xs uppercase tracking-widest text-gray-800 font-bold"
 					>Product</span
 				>
-				<a href={resolve("/new")}>Builder</a>
-				<a href="/">Templates</a>
+				<a href={`${base}/new`}>New Form</a>
+				<a href={`${base}/#about`}>About</a>
 			</div>
 			<div class="flex flex-col gap-2">
 				<span class="text-xs uppercase tracking-widest text-gray-800 font-bold"
 					>Resources</span
 				>
-				<a href="/">Docs</a>
-				<a href="/">Github</a>
+				<a
+					href="https://github.com/Moondip-Konwar/json-form-builder/commits/main/"
+					>Changelog</a
+				>
+				<a href="https://github.com/Moondip-Konwar/json-form-builder">Github</a>
 			</div>
 		</div>
 	</div>
