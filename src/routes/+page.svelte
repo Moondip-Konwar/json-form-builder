@@ -1,4 +1,5 @@
 <script>
+  import { resolve } from "$app/paths";
   import { Plus } from "lucide-svelte";
 </script>
 
@@ -21,7 +22,7 @@
   <!-- Create Button  -->
   <div class="flex flex-col items-center justify-center">
     <a
-      href="/"
+      href={resolve("/new")}
       class="rounded-lg p-3 bg-black/95 text-white font-medium cursor-pointer flex flex-row items-center gap-2"
     >
       <Plus size="20" strokeWidth="1.3"></Plus>
