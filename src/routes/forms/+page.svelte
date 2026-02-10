@@ -21,11 +21,20 @@
   const fieldsRaw = page.url.searchParams.get("fields") || "[]";
   const fields = JSON.parse(fieldsRaw);
   let data = $state({});
+  let displayData = $state({});
+
+  function generateJSON(e: SubmitEvent) {
+    e.preventDefault();
+    displayData = data;
+  }
 </script>
 
 <div class="w-full h-full flex flex-col justify-center p-8 gap-4">
   <!-- Form -->
-  <section class="h-full flex flex-col gap-8 flex-1 p-8">
+  <form
+    class="border-1 border-gray-300 h-full flex flex-col gap-8 flex-1 p-8"
+    onsubmit={generateJSON}
+  >
     <!-- Details -->
     <div class="flex flex-col gap-2">
       <h1 class="text-center text-4xl">{name}</h1>
@@ -48,38 +57,49 @@
             type={field.type}
             bind:value={data[field.label]}
             class="rounded-md"
-            placeholder="Enter: {field.label} as {field.type.toLowerCase()}"
+            placeholder="{field.label} as {field.type.toLowerCase()}"
           />
         </div>
       {/each}
     </div>
-  </section>
+
+    <!-- Submit Button -->
+    <div class="flex justify-center">
+      <button
+        class="text-white bg-black p-2 rounded-md hover:bg-gray-800 transition-all"
+        id="submit-button"
+        type="submit">Generate JSON</button
+      >
+    </div>
+  </form>
 
   <!-- Json Output -->
-  <section class="h-full flex flex-col gap-8 p-8 flex-1">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-2xl">Form JSON Output</h2>
+  {#if displayData && Object.keys(displayData).length > 0}
+    <section class="h-full flex flex-col gap-8 p-8 flex-1">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl">Form JSON Output</h2>
 
-      <button
-        onclick={copyToClipboard}
-        class="flex items-center gap-2 px-3 py-1.5 bg-black text-white rounded-md hover:bg-gray-800 transition-all active:scale-95"
-        type="submit"
-      >
-        {#if copied}
-          <Check size={16} class="text-white" />
-          <span>Copied!</span>
-        {:else}
-          <Clipboard size={16} />
-          <span>Copy JSON</span>
-        {/if}
-      </button>
-    </div>
+        <button
+          onclick={copyToClipboard}
+          class="flex items-center gap-2 px-3 py-1.5 bg-black text-white rounded-md hover:bg-gray-800 transition-all active:scale-95"
+          type="submit"
+        >
+          {#if copied}
+            <Check size={16} class="text-white" />
+            <span>Copied!</span>
+          {:else}
+            <Clipboard size={16} />
+            <span>Copy JSON</span>
+          {/if}
+        </button>
+      </div>
 
-    <pre
-      class="bg-gray-100 p-6 rounded-md flex-1 overflow-auto font-mono text-sm leading-relaxed border border-gray-200 shadow-inner">
+      <pre
+        class="bg-gray-100 p-6 rounded-md flex-1 overflow-auto font-mono text-sm leading-relaxed border border-gray-200 shadow-inner">
     {JSON.stringify(data, null, 2).trim()}
   </pre>
-  </section>
+    </section>
+  {/if}
 </div>
 
 <style>
