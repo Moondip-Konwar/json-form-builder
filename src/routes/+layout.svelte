@@ -14,7 +14,11 @@
 	class="flex flex-row px-8 py-4 border-gray-300 border-b-2 justify-between items-stretch"
 >
 	<!-- Title  -->
-	<a class="flex flex-row items-center gap-4" href={resolve("/")}>
+	<a
+		class="flex flex-row items-center gap-4"
+		href={resolve("/")}
+		id="nav-title"
+	>
 		<FileBraces size="24" strokeWidth="1.3"></FileBraces>
 		<span class="text-xl">Json Forms</span>
 	</a>
@@ -89,5 +93,9 @@
 			0 1px 0 0 currentColor,
 			0 1px 0 0 currentColor,
 			0 1px 0 0 currentColor;
+	}
+
+	#nav-title:hover {
+		box-shadow: none;
 	}
 </style>
