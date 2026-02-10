@@ -23,7 +23,7 @@
 	<div class="flex flex-row gap-4 items-center" id="nav-links">
 		<a href={resolve("/new")}>New</a>
 		<a href="/">Github</a>
-		<a href="/">About</a>
+		<a href={resolve("/") + "#about"}>About</a>
 	</div>
 </nav>
 
