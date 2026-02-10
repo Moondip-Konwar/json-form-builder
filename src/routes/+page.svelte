@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { resolve } from "$app/paths";
+  import { base, resolve } from "$app/paths";
   import { Delete, Plus } from "lucide-svelte";
   import { onMount } from "svelte";
 
@@ -37,7 +37,7 @@
   <!-- Create Button  -->
   <div class="flex flex-col items-center justify-center">
     <a
-      href={resolve("/new")}
+      href={`${base}/new`}
       class="rounded-lg p-3 bg-black/95 text-white font-medium cursor-pointer flex flex-row items-center gap-2"
     >
       <Plus size="20" strokeWidth="1.3"></Plus>
@@ -57,7 +57,7 @@
           <div class="flex flex-row items-center gap-16 justify-between">
             <!-- Form -->
             <a
-              href={form.url}
+              href={`${base}/${form.url}`}
               class="flex flex-row items-center gap-4 bg-gray-100 rounded-md p-4 hover:bg-gray-200 transition-all"
             >
               {form.name}
