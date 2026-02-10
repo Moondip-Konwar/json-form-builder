@@ -1,12 +1,17 @@
 <script lang="ts">
   import { Delete, Plus } from "lucide-svelte";
+  import { goto } from "$app/navigation";
 
+  // Form Details
+  let formName = $state("");
+  let formDescription = $state("");
+  let authorName = $state("");
+
+  // Form Field
   let fieldLabelText = $state("");
   let selectedFieldType = $state("text");
-
   let fields = $state<{ label: string; type: string }[]>([
-    { label: "First Name", type: "text" },
-    { label: "Age", type: "number" },
+    { label: "Name", type: "text" },
   ]);
 
   function addField() {
@@ -17,20 +22,35 @@
     }
 
     fields = [...fields, { label: fieldLabelText, type: selectedFieldType }];
-
     fieldLabelText = "";
+  }
+
+  function handleSubmit(event: SubmitEvent) {
+    event.preventDefault();
+
+    const params = new URLSearchParams({
+      formName,
+      formDescription,
+      authorName,
+      fields: JSON.stringify(fields),
+    });
+
+    goto(`/forms?${params.toString()}`);
   }
 </script>
 
-<form class="px-8 py-4 flex flex-row gap-8">
+<form class="px-8 py-4 flex flex-row gap-8" onsubmit={handleSubmit}>
   <!-- Form Details -->
   <section class="prose">
     <h3>Form Details</h3>
     <!-- Form Name -->
     <div class="form-control">
-      <label for="form-name" class="label">Form Name *</label>
+      <label for="form-name" class="label"
+        >Form Name <span class="text-red-900">*</span></label
+      >
       <input
         id="form-name"
+        bind:value={formName}
         required
         type="text"
         placeholder="Enter form name"
@@ -44,14 +64,25 @@
         id="form-description"
         placeholder="Enter form description"
         rows="4"
+        bind:value={formDescription}
       ></textarea>
     </div>
 
     <!-- Author Name -->
     <div class="form-control">
       <label for="author-name" class="label">Author Name</label>
-      <input id="author-name" type="text" placeholder="Enter author name" />
+      <input
+        id="author-name"
+        bind:value={authorName}
+        type="text"
+        placeholder="Enter author name"
+      />
     </div>
+
+    <!-- Create Form: Submit -->
+    <button class="bg-black p-2 rounded-md" id="submit-button" type="submit"
+      >Create Form</button
+    >
   </section>
 
   <!-- Form Content -->
@@ -119,10 +150,11 @@
     flex-direction: column;
     gap: 0.5rem;
   }
-  input,
-  textarea {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+
+  #submit-button {
+    color: white !important;
+  }
+  button:hover {
+    cursor: pointer;
   }
 </style>

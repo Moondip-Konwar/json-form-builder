@@ -5,3 +5,10 @@
 section {
   border: 1px solid var(--color-gray-300);
 }
+
+input,
+textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
