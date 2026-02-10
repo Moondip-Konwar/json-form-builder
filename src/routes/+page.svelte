@@ -57,7 +57,7 @@
           <div class="flex flex-row items-center gap-16 justify-between">
             <!-- Form -->
             <a
-              href={`${base}/${form.url}`}
+              href={`${base}${form.url}`}
               class="flex flex-row items-center gap-4 bg-gray-100 rounded-md p-4 hover:bg-gray-200 transition-all"
             >
               {form.name}
