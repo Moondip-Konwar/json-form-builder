@@ -119,12 +119,12 @@
         class="bg-white border border-gray-300 rounded-md p-2"
         bind:value={selectedFieldType}
       >
-        <option value="text">Text</option>
-        <option value="number">Number</option>
-        <option value="email">Email</option>
-        <option value="date">Date</option>
+        <option value="text">TEXT</option>
+        <option value="number">NUMBER</option>
+        <option value="email">EMAIL</option>
+        <option value="date">DATE</option>
         <option value="url">URL</option>
-        <option value="time">Time</option>
+        <option value="time">TIME</option>
       </select>
 
       <!-- Button -->
