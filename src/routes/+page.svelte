@@ -1,12 +1,7 @@
 <script lang="ts">
   import { resolve } from "$app/paths";
-  import { Copy, Delete, Plus } from "lucide-svelte";
+  import { Delete, Plus } from "lucide-svelte";
   import { onMount } from "svelte";
-
-  function copyToClipboard(data) {
-    const jsonString = JSON.stringify(data, null, 2);
-    navigator.clipboard.writeText(jsonString);
-  }
 
   type FormEntry = {
     name: string;
@@ -70,15 +65,6 @@
 
             <!-- Actions -->
             <div class="flex flex-row items-center gap-2">
-              <!-- Copy Button -->
-              <button
-                onclick={() => copyToClipboard(form)}
-                class="flex items-center gap-2 px-3 py-1.5 bg-black text-white rounded-md hover:bg-gray-800 transition-all active:scale-95 ml-4"
-                type="submit"
-              >
-                <Copy></Copy>
-              </button>
-
               <!-- Delete Button  -->
               <button
                 onclick={() => {
