@@ -27,7 +27,7 @@ Ensure you have Node.js and pnpm installed on your machine.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/moondip/json-form-builder.git
+git clone https://github.com/Moondip-Konwar/json-form-builder.git
 
 ```
 
