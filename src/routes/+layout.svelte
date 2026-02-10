@@ -10,7 +10,7 @@
 
 <!-- Navbar -->
 <nav
-	class="flex flex-row px-8 py-4 border-gray-300 border-b-2 justify-between items-stretch"
+	class="fixed w-screen flex flex-row px-8 py-4 border-gray-300 border-b-2 justify-between items-stretch"
 >
 	<!-- Title  -->
 	<div class="flex flex-row items-center gap-4">
