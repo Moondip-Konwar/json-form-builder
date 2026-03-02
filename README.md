@@ -1,4 +1,4 @@
-# json-form-builder
+# Json Form Builder
 
 A web-based tool to build forms that export JSON data. This application uses a serverless architecture where form configurations are stored entirely within the URL parameters.
 
